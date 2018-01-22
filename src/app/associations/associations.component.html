@@ -1,0 +1,134 @@
+<div class="container spacer" >
+  <button routerLink="/associations" class="btn btn-primary">Gestion des associations</button>
+  <button routerLink="/demandes" class="btn btn-primary">Approbation des demandes</button>
+  <button routerLink="/statistiques" class="btn btn-primary">Statistiques</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+</div>
+<div class="container spacer">
+  <div class="panel panel-default">
+<body class="aware-theme v2-theme page-type-basic js with-background">
+    <div class="panel-heading">Ajouter une association</div>
+    <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Nom:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="association.nom" required>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Sigle:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="association.sigle" required >
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Objet Social:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="association.objet_social" required >
+              </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Email:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="email" [(ngModel)]="association.email" required email>
+              </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Tel:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="association.tel" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Login:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="association.login" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Mot de passe:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="password" [(ngModel)]="association.mdp" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Document:</label>
+            <div class="col-md-7">
+          <input type="file" class="form-control" [(ngModel)]="association.doc" (change)="onFileChange($event)" #fileInput>
+        </div>
+          </div>
+        </div>
+
+
+          <button  type="submit" class="btn btn-primary custom-width" (click)="saveAssociation()">Save</button>
+          <button  type="reset" class="btn btn-primary custom-width" >Annuler</button>
+      </div>
+</body>
+    </div>
+
+
+
+
+
+
+<div class="panel panel-default">
+        <label>Mot clé:</label>
+        <input type="text" [(ngModel)]="motCle"/>
+        <button class="btn btn-primary" (click)="chercher()">Search</button>
+
+      <div class="table-responsive">
+      <table class="table table-striped">
+       <tr>
+         <th>Id</th><th>Nom</th><th>Sigle</th><th>Objet social</th>
+       </tr>
+        <tr *ngFor="let a of pageAssociations?.content">
+          <td>{{a.id}}</td>
+          <td>{{a.nom}}</td>
+          <td>{{a.sigle}}</td>
+          <td>{{a.objet_social}}</td>
+          <td>
+            <a (click)="onEditAssociation(a.id)" class="clickable">Modifier</a>
+          </td>
+          <td>
+            <a (click)="onDeleteAssociation(a)" class="clickable">Supprimer</a>
+          </td>
+        </tr>
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+            <a class="clickable" (click)="goToPage(i)">{{i}}</a></li>
+        </ul>
+
+      </div>
+    </div>
+</div>
+</div>
+
+

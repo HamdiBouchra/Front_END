@@ -1,0 +1,51 @@
+<div class="container spacer">
+  <div class="panel panel-primary" *ngIf="mode==1">
+
+    <div class="panel-heading">Ajouter une association</div>
+    <div class="panel-body">
+
+        <div class="form-group ">
+          <label class="control-lable" >Nom:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.nom" >
+        </div>
+
+
+        <div class="form-group ">
+          <label class="control-lable" >Sigle:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.sigle" >
+        </div>
+
+
+        <div class="form-group ">
+          <label class="control-lable" >Objet Social:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.objet_social" >
+        </div>
+
+
+        <div class="form-group ">
+          <label class=" control-lable" >Email:</label>
+          <input class="form-control" type="email" [(ngModel)]="association.email">
+        </div>
+
+
+        <div class="form-group ">
+          <label class="control-lable" >Tel:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.tel">
+        </div>
+
+        <div class="form-group ">
+          <label class="control-lable" >Login:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.login">
+        </div>
+
+        <div class="form-group ">
+          <label class="control-lable" >Mot de passe:</label>
+          <input class="form-control" type="text" [(ngModel)]="association.mdp">
+        </div>
+
+
+        <button  class="btn btn-primary" (click)="updateContact()" >Save</button>
+
+    </div>
+  </div>
+</div>

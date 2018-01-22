@@ -1,0 +1,31 @@
+<div class="container spacer" id="milieu">
+  <button routerLink="/associations" class="btn btn-primary">Gestion des associations</button>
+  <button routerLink="/demandes" class="btn btn-primary">Approbation des demandes</button>
+  <button routerLink="/statistiques" class="btn btn-primary">Statistiques</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+</div>
+
+<div class="container spacer" >
+<a routerLink="/statistiques-mission" > A propos des missions</a>
+<a routerLink="/statistiques-benevoles" > A propos des bénévoles</a>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+    <canvas baseChart width="2" height="1"
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+</div>
+<div class="col-md-6">
+    <canvas baseChart width="2" height="1"
+                [data]="doughnutChartDataAge"
+                [labels]="doughnutChartLabelsAge"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+</div>

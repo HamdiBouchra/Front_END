@@ -1,0 +1,15 @@
+<div class="container spacer" >
+  <button routerLink="/associations" class="btn btn-primary">Gestion des associations</button>
+  <button routerLink="/demandes" class="btn btn-primary">Approbation des demandes</button>
+  <button routerLink="/inscription-association" class="btn btn-primary">S'inscrire</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p style="text-align:center"><img [src]="d" width="600" height="500" vspace="50"></p>
+  </div>
+  <p style="text-align:center">
+  <button  type="submit" class="btn btn-primary custom-width" (click)="Accepter()">Accepter</button>
+  <button  type="reset" class="btn btn-primary custom-width"  (click)="Refuser()">Refuser</button>
+  </p>
+</div>

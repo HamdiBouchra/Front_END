@@ -1,0 +1,184 @@
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+<div class="container spacer" >
+  <button routerLink="/authentification" class="btn btn-primary">Administrateur</button>
+  <button routerLink="/espace-association" class="btn btn-primary">Associations</button>
+  <button routerLink="/authentification-benevole" class="btn btn-primary">Bénévoles</button>
+  <button routerLink="/authentification" class="btn btn-primary">Entreprises</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+
+</div>
+
+<div class="container spacer">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Ajouter une mission</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Nom:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="mission.nom" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Description:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="mission.description" required >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Date:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="date" [(ngModel)]="mission.date" required >
+          </div>
+        </div>
+      </div>
+
+
+      
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Domaine</label>
+          <div class="col-md-7">
+
+              <select  class="form-control" [(ngModel)]="mission.domaine">
+                <option  [value]="">Sante</option>
+                <option  [value]="">Soutien scolair</option>
+                <option  [value]="">Aides sociales</option>
+                <option  [value]="">Administration</option>
+                <option  [value]="">Informatique</option>
+                <option  [value]="">Animation</option>
+              </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Lieu:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="mission.lieu" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Nombre des participants:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="mission.nbrParticipFix" required>
+          </div>
+        </div>
+      </div>
+
+
+      
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Document:</label>
+          <div class="col-md-7">
+            <input type="file" class="form-control" [(ngModel)]="mission.imag" (change)="onFileChange($event)" #fileInput>
+          </div>
+        </div>
+      </div>
+
+      <button  type="submit" class="btn btn-primary custom-width" (click)="saveMission()">Save</button>
+      <button  type="reset" class="btn btn-primary custom-width" >Annuler</button>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th><th>Nom</th><th>Domaine</th><th>Lieu</th>
+          <th>Date</th><th>Nombre des participants</th>
+          <th>Bénévoles</th>
+        </tr>
+        <tr *ngFor="let a of pageMissions">
+          <td>{{a.id_m}}</td>
+          <td>{{a.nom}}</td>
+          <td>{{a.domaine}}</td>
+          <td>{{a.lieu}}</td>
+          <td>{{a.date}}</td>
+          <td>{{a.nbrParticipFix}}</td>
+          
+          <a  (click)="ShowBenMiss(a.id_m)"  data-toggle="modal" data-target="#myModal">Voir liste des bénévoles</a>
+
+
+         <td>
+            <a (click)="onEditMission(a.id_m)" class="clickable">Modifier</a>
+          </td>
+          <td>
+            <a (click)="onDeleteMission(a)" class="clickable">Supprimer</a>
+          </td>
+        </tr>
+
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills">
+          <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+            <a class="clickable" (click)="goToPage(i)">{{i}}</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Liste des bénévoles</h4>
+          </div>
+          <div class="modal-body">
+              <div class="table-responsive">
+            <table class="table table-striped" *ngFor="let a of ListBenev">
+              <th>Id</th><th>Nom</th><th>Prénom</th>
+              <tr>
+                <input type="hidden" [(ngModel)]="missionModal.id_m"/>
+                <td>  {{a.id_b}}</td>
+                <td>  {{a.nom}}</td>
+                <td>  {{a.prenom}}</td>
+                <td>
+                    <button  id="button{{a.id_b}}" class="btn btn-primary custom-width" type="button" (click)="accepter(missionModal,a)" >Accepter</button>
+                  </td>
+                  <td>
+                    <button  id="btnn{{a.id_b}}" type="button" class="btn btn-primary custom-width"  (click)="refuser(missionModal,a)" (click)="togglle(a.id_b)">Refuser</button>
+                  </td>
+
+              </tr>
+                </table>
+                </div>
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+</div>
+</div>

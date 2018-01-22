@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+.spacer
+{
+  margin-top: 30px;
+  margin-right:80px;
+}
+
+.clickable{
+  cursor:pointer;
+}
+
+
+#milieu
+{
+  float:center;
+}
+
+
+
+body
+{
+  background:url('https://d3n8a8pro7vhmx.cloudfront.net/benenova/sites/1/header_images/original/Image_11-04-15_at_08.53.jpg?1428735685')
+         no-repeat center center fixed;
+}
+
+
+
+

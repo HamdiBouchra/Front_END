@@ -1,0 +1,103 @@
+<div class="container spacer">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">S'inscrire</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Nom:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="benevole.nom" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Prenom:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="benevole.prenom" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Date de naissance:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="date" [(ngModel)]="benevole.date" required >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Email:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="benevole.email"  >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Tel:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="benevole.tel" >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Login:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="benevole.login" >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Mot de passe:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="password" [(ngModel)]="benevole.mdp" >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Sexe:</label>
+          <div class="col-md-7">
+
+              <select  class="form-control" [(ngModel)]="benevole.sexe">
+                <option  [value]="">Femme</option>
+                <option  [value]="">Homme</option>
+              </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Situation familiale:</label>
+          <div class="col-md-7">
+            <select class="form-control" [(ngModel)]="benevole.situationF">
+              <option  [value]="">Marié(e)</option>
+              <option  [value]="">Célibatire</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <button  type="submit" class="btn btn-primary custom-width" (click)="savebenevole()">Save</button>
+      <button  type="reset" class="btn btn-primary custom-width" >Annuler</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container spacer">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Ajouter une association</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Nom:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.nom" required>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Sigle:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.sigle" required >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Objet Social:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.objet_social" required >
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Email:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="email" [(ngModel)]="association.email" required email>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Tel:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.tel" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Login:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.login" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Mot de passe:</label>
+          <div class="col-md-7">
+            <input class="form-control" type="text" [(ngModel)]="association.mdp" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="col-md-2 control-lable" >Document:</label>
+          <div class="col-md-7">
+            <input type="file" class="form-control" [(ngModel)]="association.doc" (change)="onFileChange($event)" #fileInput>
+          </div>
+        </div>
+      </div>
+
+      <button  type="submit" class="btn btn-primary custom-width" (click)="saveAssociation()">Save</button>
+      <button  type="reset" class="btn btn-primary custom-width" >Annuler</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<div class="container spacer" >
+  <button routerLink="/authentification" class="btn btn-primary">Administrateur</button>
+  <button routerLink="/espace-association" class="btn btn-primary">Associations</button>
+  <button routerLink="/authentification-benevole" class="btn btn-primary">Bénévoles</button>
+  <button routerLink="/espace-entreprise" class="btn btn-primary">Entreprises</button>
+  
+</div>
+<div class="login-page">
+  <div class="form">
+    <input type="text" [(ngModel)]="benevole.login" />
+    <input type="password" [(ngModel)]="benevole.mdp" />
+    <button (click)="authentifBenevole()">login</button>
+
+    <p class="message">Not registered? <a routerLink='/espace-benevole'>Create an account</a></p>
+  </div>
+</div>

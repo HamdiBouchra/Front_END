@@ -1,0 +1,95 @@
+
+<div class="container spacer">
+  <div class="panel panel-default">
+<body class="aware-theme v2-theme page-type-basic js with-background">
+    <div class="panel-heading">Ajouter une entreprise</div>
+    <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Nom:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.nom" required>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Sigle:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.sigle" required >
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+              <label class="col-md-2 control-lable" >Domaine d'activité:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.domaine_activ" required >
+              </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Secteur:</label>
+            <div class="col-md-7">
+  
+                <select  class="form-control" [(ngModel)]="entreprise.secteur">
+                  <option  [value]="">Public</option>
+                  <option  [value]="">Privé</option>
+                  <option  [value]="">Semi-public</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Email:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="email" [(ngModel)]="entreprise.email" required email>
+              </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Tel:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.tel" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Login:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.login" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-lable" >Mot de passe:</label>
+            <div class="col-md-7">
+                <input class="form-control" type="text" [(ngModel)]="entreprise.mdp" required>
+              </div>
+          </div>
+        </div>
+
+          <button  type="submit" class="btn btn-primary custom-width" (click)="saveEntreprise()">S'inscrire</button>
+      </div>
+</body>
+    </div>
+
+</div>
+
+

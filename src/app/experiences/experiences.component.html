@@ -1,0 +1,143 @@
+<head>
+    <meta charset="utf-8">
+  
+  </head>
+  
+  <div class="container spacer" >
+    <button routerLink="/authentification" class="btn btn-primary">Administrateur</button>
+    <button routerLink="/espace-association" class="btn btn-primary">Associations</button>
+    <button routerLink="/inscription-association" class="btn btn-primary">Bénévoles</button>
+    <button routerLink="/authentification" class="btn btn-primary">Entreprises</button>
+    
+  </div>
+  
+  <div class="container spacer" >
+  <div class="panel panel-default">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+      <th>Nom</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th>Domaine</th>
+      </tr>
+      <tr *ngFor="let a of MissionBenv">
+        <td>
+          <b>{{a.nom}}</b>
+        </td>
+  
+        <td>
+         <time> {{a.date}}</time>
+        </td>
+        <td>
+          {{a.lieu}}
+        </td>
+  
+        <td>
+          {{a.domaine}}
+        </td>
+        <td>
+      <!--  <button class="btn" id="btn{{a.id_m}}"      (click)="toggle(a.id_m)"  (click)="participer(a)">Participer</button>-->
+      <button  id="btn{{a.id_m}}" (click)="ShowBenMiss(a.id_m)" class="btn btn-primary custom-width" type="button" data-toggle="modal" data-target="#myModal" >Ajouter experience</button>
+      </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  </div>
+
+  <!-- Modal -->
+
+    <!-- Modal -->
+    <div  width="1000%" class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="container spacer">
+         
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Ajouter une expérience</h4>
+           
+            <div class="modal-body">
+              
+              <input type="hidden" [(ngModel)]="missionModal.id_m"/>
+    
+            
+                  <div class="panel-body">
+                      <div class="row">
+                        <div class="form-group col-md-7">
+                          <label class="col-md-3 control-lable" >C'est votre premier travail bénévole:</label>
+                          <div class="col-md-7"> 
+              
+                            <select  class="form-control" [(ngModel)]="exper.estDejaBenevole">
+                              <option  [value]="">Oui</option>
+                              <option  [value]="">Non</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-7">
+                          <label class="col-md-3 control-lable" >Est ce que ce travail est bénéfique</label>
+                          <div class="col-md-7">
+                
+                              <select  class="form-control" [(ngModel)]="exper.benefique">
+                                <option  [value]="">Oui</option>
+                                <option  [value]="">Non</option>
+                              </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+            
+            
+                    <div class="row">
+                        <div class="form-group col-md-7">
+                          <label class="col-md-3 control-lable" >Niveau de satisfaction:</label>
+                          <div class="col-md-7">
+                
+                              <select  class="form-control" [(ngModel)]="exper.satisfaction">
+                                <option  [value]="">Trés satisfaisant</option>
+                                <option  [value]="">Satisfaisant</option>
+                                <option  [value]="">Pas Satisfaisant</option>
+                              </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group col-md-7">
+                            <label class="col-md-3 control-lable" >Vous avez rencontré des problémes?:</label>
+                            <div class="col-md-7">
+                  
+                                <select  class="form-control" [(ngModel)]="exper.prb">
+                                  <option  [value]="">Oui</option>
+                                  <option  [value]="">Non</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-7">
+                              <label class="col-md-3 control-lable" >Autre remarques:</label>
+                              <div class="col-md-7">
+                                <input class="form-control" type="email" [(ngModel)]="exper.remarque" required email>
+                              </div>
+                            </div>
+                          </div>
+    
+        <button   class="btn btn-primary custom-width"  (click)="saveExperience(missionModal,expr)">Ajouter</button>
+
+
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

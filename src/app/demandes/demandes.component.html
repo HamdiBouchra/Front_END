@@ -1,0 +1,28 @@
+<div class="container spacer" >
+  <button routerLink="/associations" class="btn btn-primary">Gestion des associations</button>
+  <button routerLink="/demandes" class="btn btn-primary">Approbation des demandes</button>
+  <button routerLink="/inscription-association" class="btn btn-primary">S'inscrire</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+</div>
+<div class="container spacer">
+<div class="panel panel-default">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <th>Id</th><th>Nom</th><th>Sigle</th><th>Objet social</th>
+      </tr>
+      <tr *ngFor="let a of pageAssociations?.content">
+        <td>{{a.id}}</td>
+        <td>{{a.nom}}</td>
+        <td>{{a.sigle}}</td>
+        <td>{{a.objet_social}}</td>
+        <td>
+          <a (click)="Approuver(a.id)" class="clickable">Approuver</a>
+        </td>
+      </tr>
+
+    </table>
+
+  </div>
+</div>
+</div>

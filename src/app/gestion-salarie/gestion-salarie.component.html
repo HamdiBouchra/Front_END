@@ -1,0 +1,233 @@
+<div class="container spacer" >
+  <button routerLink="/authentification" class="btn btn-primary">Administrateur</button>
+  <button routerLink="/espace-association" class="btn btn-primary">Associations</button>
+  <button routerLink="/authentification-benevole" class="btn btn-primary">Bénévoles</button>
+  <button routerLink="/authentification" class="btn btn-primary">Entreprises</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+  
+</div>
+
+
+
+<div class="container spacer" >
+  <div class="panel panel-default">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <td>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <button   data-toggle="modal" data-target="#myModal"><img src="assets/images/add_button.png" width="40" height="40"/></button>
+        </td>
+      </tr>
+      <tr>
+      <th>Code</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Date de naissance</th>
+      <th>Email</th>
+      </tr>
+      <tr *ngFor="let a of listSalarie">
+          <td>
+              <b>{{a.id_sal}}</b>
+            </td>
+        <td>
+          {{a.nom}}
+        </td>
+  
+        <td>
+         <time> {{a.prenom}}</time>
+        </td>
+        <td>
+          {{a.date}}
+        </td>
+  
+        <td>
+          {{a.email}}
+        </td>
+        <td>
+      <button  (click)="ListLoisir(a)" class="btn btn-primary custom-width" type="button" data-toggle="modal" data-target="#myModal2" >Ajouter Centre d'intérêt</button>
+      </td>
+      <td>
+      <button (click)="affectationMissionSal(a)"  class="btn btn-primary custom-width" type="button" data-toggle="modal" data-target="#myModal3" >Affecter aux missions</button>      
+      </td>
+      <td>
+        <button (click)="consultSalLoisir(a)"  class="btn btn-primary custom-width" type="button" data-toggle="modal" data-target="#myModal4" >Consulter Centre d'intérêt</button>      
+      </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  </div>
+
+<!-- Modal1 -->
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Centre d'intêret</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-2 control-lable" >Centre d'intêret</label>
+                  <div class="col-md-7" >
+                      <select  class="form-control"  [(ngModel)]="loisi">
+                        <option  *ngFor="let l of listLoisirs" [ngValue]="l">{{l.descript}}</option>
+                      </select>
+                  </div>
+                </div>
+              </div>              
+      <button   class="btn btn-primary custom-width"  (click)="saveSalarieLoisir()">Ajouter</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+    </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal3" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Liste des missions</h4>
+      </div>
+      <div class="modal-body">
+          <div class="table-responsive">
+        <table class="table table-striped" *ngFor="let miss of ListMission">
+          <th>Id</th><th>Nom</th><th>Lieu</th><th>Date</th>
+          <tr>
+            <td>  {{miss.id_m}}</td>
+            <td>  {{miss.nom}}</td>
+            <td>  {{miss.lieu}}</td>
+            <td>  {{miss.date}}</td>
+            <td>
+                <button   (click)="associerMissionSalar(miss)"  class="btn btn-primary custom-width" type="button" >Affecter</button>
+              </td>
+          </tr>
+            </table>
+            </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+   
+<!-- Modal -->+
+<div class="modal fade" id="myModal4" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Liste des missions</h4>
+    </div>
+    <div class="modal-body">
+        <div class="table-responsive">
+      <table class="table table-striped" *ngFor="let a of ListLoisirSal">
+        <th>Desctiption</th>
+        <tr>
+          <td>  {{a.descript}}</td>
+        </tr>
+          </table>
+          </div>
+    
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ajouter un salarié</h4>
+        </div>
+        <div class="modal-body">
+        
+            <div class="panel-body">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-2 control-lable" >Nom:</label>
+                <div class="col-md-7">
+                  <input class="form-control" type="text" [(ngModel)]="salarie.nom" required>
+                </div>
+              </div>
+            </div>
+      
+      
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-2 control-lable" >Prénom:</label>
+                <div class="col-md-7">
+                  <input class="form-control" type="text" [(ngModel)]="salarie.prenom" required >
+                </div>
+              </div>
+            </div>
+      
+      
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-2 control-lable" >Date:</label>
+                <div class="col-md-7">
+                  <input class="form-control" type="date" [(ngModel)]="salarie.date" required >
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-2 control-lable" >Tel:</label>
+                <div class="col-md-7">
+                  <input class="form-control" type="text" [(ngModel)]="salarie.tel" required >
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="col-md-2 control-lable" >Email:</label>
+                <div class="col-md-7">
+                  <input class="form-control" type="text" [(ngModel)]="salarie.email" required >
+                </div>
+              </div>
+            </div>
+          
+            <button   class="btn btn-primary custom-width"  (click)="saveSalarie()">Ajouter</button>
+          </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                
+                </div>
+                </div>
+              </div>
+
+

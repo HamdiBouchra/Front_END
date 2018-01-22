@@ -1,0 +1,59 @@
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<div class="container spacer" >
+  <button routerLink="/authentification" class="btn btn-primary">Administrateur</button>
+  <button routerLink="/espace-association" class="btn btn-primary">Associations</button>
+  <button routerLink="/authentification-benevole" class="btn btn-primary">Bénévoles</button>
+  <button routerLink="/authentification" class="btn btn-primary">Entreprises</button>
+  <button  (click)="seDeconnecter()" ><img src="assets/images/logout.png" width="40" height="40"/></button>
+  
+</div>
+<div class="container spacer" >
+<a (click)="goToExperience()" >Ajouter vos expériences</a>
+</div>
+<div class="container spacer" >
+<div class="panel panel-default">
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr *ngFor="let a of allMissions ; let ii = index">
+      <td></td>
+      <td>
+        <b>{{a.nom}}</b>
+      </td>
+
+      <td>
+       <time> {{a.date}}</time>
+      </td>
+      <td>
+        {{a.lieu}}
+      </td>
+
+      <td>
+        {{a.nbrParticipFix}}
+      </td>
+
+      <td>
+        <p style="text-align:center"><img [src]="tabImages[ii]" width="250" height="160" vspace="40"></p>
+      </td>
+
+   <!--   <td>
+        <button  type="submit"  class="btn btn-primary custom-width"   [disabled]="currentLesson !== '2'" (click)="participer(a) ">Participer</button>
+      </td>-->
+      <td>
+    <!--  <button class="btn" id="btn{{a.id_m}}"      (click)="toggle(a.id_m)"  (click)="participer(a)">Participer</button>-->
+    <button  id="btn{{a.id_m}}"  class="btn btn-primary custom-width" type="button" (click)="participer(a)" >Participer</button>
+    </td>
+    </tr>
+  </table>
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages;let i=index">
+        <a class="clickable" (click)="goToPage(i)">{{i}}</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
